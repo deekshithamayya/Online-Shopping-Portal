@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Reports</title>
+<script>
+	$(document).ready(function(){
+	 var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("orders").innerHTML = this.responseText;
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/reportgenerate.php?fd=&td=&fp=&tp=", true);
+xhttp.send();
+});
+function setorders(){
+	var fd=$("#fromDate").val();
+	var td=$("#toDate").val();
+	var fp=$("#fromPrice").val();
+	var tp=$("#toPrice").val();
+
+	$(document).ready(function(){
+	 var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("orders").innerHTML = this.responseText;
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/reportgenerate.php?fd="+fd+"&td="+td+"&fp="+fp+"&tp="+tp, true);
+xhttp.send();
+});
+}
+
+</script>
+<style>
+	table,tr,td,th{
+		border:2px solid black;
+		margin:10px;
+		padding:10px;
+		text-align:center;
+	}
+	table{
+		margin-left:5%;
+		margin-right:5%;
+		width:90%;
+	}
+	#filters{
+		margin-left: 5%;
+		margin-right:5%;
+		width:90%;
+		align-items: center;
+	}
+</style>
+</head>
+<body>
+	<div class="container"><div id="filters">
+Date:<br>
+From:<input type="text" id="fromDate">
+To:<input type="text" id="toDate"><br>
+Price Range:<br>
+From:<input type="text" id="fromPrice">
+To:<input type="text" id="toPrice"><br>
+<button id="apply" onclick="setorders()">Apply</button><br></div>
+<div id="orders">Orders
+	
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>products list</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	
+	 $(document ).ready(function() {
+    
+var proid=sessionStorage.getItem("productid");
+
+
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("productinfo").innerHTML = this.responseText;
+     $("#productid").val(proid); 
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/productinfo.php?q="+proid, true);
+
+xhttp.send();
+
+	
+
+	 });
+
+</script>
+<style>
+	body{
+		background-color: black;
+		padding: 0px;
+		margin: 0px;
+		font-family: "Anton";
+
+	}
+	.container-fluid{
+		width: 100%;
+		padding: 0px;
+		margin-top:-9px;
+		
+	}
+	img{
+		width: 50%;
+		height: 100vh;
+		align-items: center;
+		margin-left: 25%;
+		margin-right: 25%;
+		margin-top: 0px;
+	}
+	form{
+		width: 50%;
+		margin-right: 25%;
+		margin-left: 25%;
+		color:#AAAAAA;
+		font-size: 30px;
+		font-family: "Anton";
+	}
+	select{
+		width: 50%;
+		color: black;
+	}
+	input{
+		width: 100%;
+		color:black;
+		font-family: "Anton";
+	}
+	textarea{
+		width: 100%;
+		color: black;
+	}
+	input[type="submit"]{
+		color: #000000;
+		background-color:#AAAAAA;
+		height: 10%;
+		font-weight: bold;
+		width: 100%;
+	}
+	.rate{
+		width: 50%;
+		align-content: center;
+		margin-right: 25%;
+		margin-left: 25%;
+		color: #AAAAAA;
+		font-size: 40px;
+	}
+</style>
+</head>
+<body>
+	<p id="abc"></p>
+	<div class="container-fluid">
+	<div id="productinfo"></div>
+	</div>
+
+</body>

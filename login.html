@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <title>products list</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+body{
+	background-color: black;
+	background-image:url("clothes/loginBG.jpg");
+	
+}
+	.container-fluid{
+	
+	}
+	form{
+		margin-left: 30%;
+		width: 40%;
+		margin-right: 30%;
+		font-size: 27px;
+		margin-top:0px;
+		margin-bottom:0px;
+		height: 90%;
+		color: #000;
+		background-color:white;
+		padding:20px;
+		border: 10px solid;
+		border-color: #000;
+		font-weight: bold;
+	}
+	.jumbotron{
+		margin-left:-20px;
+		margin-right:-20px;
+		background-color:#000;
+		color: white;
+		font-family:"Anton";
+		text-align: center;
+	}
+	input{
+		color:#000;
+		font-weight: bold;
+		width: 100%;
+		border:5px solid black;
+	}
+
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="jumbotron"><h1>ELEGANT CLOTHING</h1></div>
+	<form action="http://localhost/osp/loginform.php" method="post">
+		<div id="error"></div>
+		Userame:<input type="text" name="username" required><br/>
+		Password:<input type="password" name="password" required><br><br>
+		<input type="submit" value="Log In"><br><br>
+		<a href="signup.html">New User? Sign up!</a>
+		
+	</form><br>
+	
+</div>
+</body>
+</html>

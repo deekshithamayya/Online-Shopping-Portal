@@ -1,0 +1,141 @@
+<html>
+<head>
+  <title>products list</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+  $(document ).ready(function() {
+    
+ categoryname=sessionStorage.getItem("category");
+  var cat=categoryname.toUpperCase();
+  if(cat=="MPANTS" || cat=="WPANTS") 
+    cat="PANTS";
+  if(cat=="TSHIRTS")
+    cat="T-SHIRTS";
+
+    $("h1").text(cat);
+   var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("productslist").innerHTML = this.responseText;
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/products.php?q="+categoryname, true);
+xhttp.send();
+
+
+});
+  function high(){
+     var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("productslist").innerHTML = this.responseText;
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/sorting.php?cat="+categoryname+"&order=high", true);
+xhttp.send();
+  }
+
+   function low(){
+     var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("productslist").innerHTML = this.responseText;
+    }
+  };
+     xhttp.open("GET", "http://localhost/osp/sorting.php?cat="+categoryname+"&order=low", true);
+xhttp.send();
+  }
+
+  
+
+
+function setproduct(str){
+  sessionStorage.setItem("productid",str);
+
+}
+</script>
+<style>
+body,html{
+  background-color:black;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-family: "Anton";
+  color: white;
+}
+#buy{
+  width: 100%;
+  font-size:30px;
+}
+button{
+  color: black;
+  background-color: #AAA;
+  }
+h1{
+  text-align: center;
+  font-family:Anton;
+}
+.container{
+  padding-left:20vw;
+  padding-right:20vw;
+
+}
+.btn-block{
+  height:9vh;
+}
+img{
+  
+  height:70vh;
+  width:100%;
+}
+.rate{
+  text-align: center;
+  height:6vh;
+  font-size:30px;
+  color:#BBBBBB;
+}
+.jumbotron{
+  color: black;
+  background-color:#DDDDDD;
+  align-content: center;
+}
+.item{
+   width:40%;
+  margin-bottom:8%;
+  border: 5px solid white;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+#low{
+  float:right;
+  font-size: 20px;
+  margin-right: 20px;
+}
+#high{
+  float: left;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.item:nth-child(odd){
+  float:left;
+ 
+}
+.item:nth-child(even){
+  float:right;
+}
+
+</style>
+</head>
+<body>
+  <div class="jumbotron"><h1></h1>
+    <button id="high" onclick="high()">Sort by price-High to Low</button>
+    <button id="low" onclick="low()">Sort by price-Low to high</button></div>
+  <div id="productslist">
+  <div class="container">
+  </div>
+</div>
+</body></html>
